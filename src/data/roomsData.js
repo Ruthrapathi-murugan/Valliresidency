@@ -58,7 +58,7 @@ export const roomsData = [
         description: "A cozy and elegant room perfect for solo travelers.",
         price: 1500,
         capacity: 1,
-        amenities: ["Free WiFi", "AC", "Single Bed", "Attached Bathroom"],
+        amenities: ["Free WiFi", "Single Bed", "Attached Bathroom"],
         images: [
             "https://res.cloudinary.com/dcgkfd03b/image/upload/v1776835490/SINGLEBED_kozmzn.png",
             "https://res.cloudinary.com/dcgkfd03b/image/upload/v1776835178/BATHROOM3_jwobz5.png"

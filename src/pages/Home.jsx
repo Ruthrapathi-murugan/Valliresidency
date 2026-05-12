@@ -51,7 +51,7 @@ const Home = () => {
                         style={styles.heroTitle}
                         className="hero-title"
                     >
-                        Experience True Luxury
+                        Best Luxury Hotel in Palani
                     </motion.h1>
                     <motion.p 
                         initial={{ opacity: 0, y: 20 }}
@@ -79,13 +79,13 @@ const Home = () => {
                 <div className="container">
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '40px', alignItems: 'center' }}>
                         <div style={{ flex: '1 1 400px' }}>
-                            <motion.h2 
+                             <motion.h2 
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 style={{ fontSize: '2.5rem', color: '#C09B5A', marginBottom: '20px', fontFamily: "'Playfair Display', serif" }}
                             >
-                                Experience the Essence of Palani
+                                Discover the Best Stay in Palani
                             </motion.h2>
                             <motion.p
                                 initial={{ opacity: 0, y: 20 }}
@@ -130,7 +130,7 @@ const Home = () => {
                         className="section-title"
                         style={{ textAlign: 'center', marginBottom: '40px' }}
                     >
-                        Our Luxury Rooms
+                        Luxury Rooms & Suites in Palani
                     </motion.h2>
                     
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '40px' }}>
@@ -299,7 +299,7 @@ const Home = () => {
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
-                                src="/images/location_mockup.png" 
+                                src="https://res.cloudinary.com/dcgkfd03b/image/upload/v1778606651/Screenshot_2026-05-12_224458_nufqzy.png" 
                                 alt="Palani Temple Location" 
                                 style={{ width: '100%', borderRadius: '8px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
                             />
@@ -324,27 +324,27 @@ const Home = () => {
                             {
                                 name: "Arulmigu Dhandayuthapani Swamy Temple",
                                 description: "The most famous landmark in Palani, this ancient temple dedicated to Lord Murugan is situated atop a hill and is one of the six major abodes of the deity.",
-                                image: "/images/attractions/palani_murugan_temple.png"
+                                image: "https://res.cloudinary.com/dcgkfd03b/image/upload/v1778606651/Screenshot_2026-05-12_224458_nufqzy.png"
                             },
                             {
                                 name: "Idumban Temple",
                                 description: "Located on Idumban Hill, this temple holds deep mythological significance related to the main Murugan temple and offers beautiful panoramic views of the region.",
-                                image: "/images/attractions/idumban_temple.png"
+                                image: "https://res.cloudinary.com/dcgkfd03b/image/upload/v1778606714/Screenshot_2026-05-12_225449_nmlarr.png"
                             },
                             {
                                 name: "Thiru Avinankudi Temple",
                                 description: "Known as the 'third' abode or the base temple, it is located at the foothills and is considered one of the oldest and most sacred temples in Palani.",
-                                image: "/images/attractions/thiruvaavinankudi_temple.png"
+                                image: "https://res.cloudinary.com/dcgkfd03b/image/upload/v1778606607/thiru_aavinankudi_palani_fqjvrw.jpg"
                             },
                             {
                                 name: "Varathamanathi Dam",
                                 description: "A beautiful scenic picnic spot located just a few kilometers from Palani. It offers spectacular views of the Western Ghats and calm waters perfect for relaxing.",
-                                image: "/images/attractions/varathamanathi_dam.png"
+                                image: "https://res.cloudinary.com/dcgkfd03b/image/upload/v1778606621/Screenshot_2026-05-12_224927_h1pyxj.png"
                             },
                             {
                                 name: "Palar Porundalar Dam",
                                 description: "The largest dam in the district, set amidst picturesque surroundings and tropical forests. It provides a peaceful atmosphere for a serene getaway.",
-                                image: "/images/attractions/palar_porundalar_dam.png"
+                                image: "https://res.cloudinary.com/dcgkfd03b/image/upload/v1778606621/Screenshot_2026-05-12_225252_wv60ia.png"
                             }
                         ].map((attraction, i) => (
                             <motion.div 

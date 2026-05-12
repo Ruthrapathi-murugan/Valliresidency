@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { roomsData } from '../data/roomsData';
-import { loadScript } from '../utils/loadScript';
 import { motion, AnimatePresence } from 'framer-motion';
 import BookingModal from '../components/BookingModal';
 
 const RoomDetail = () => {
     const { id } = useParams();
-    const navigate = useNavigate();
     
     const [room, setRoom] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -19,43 +17,6 @@ const RoomDetail = () => {
         setRoom(matchedRoom);
         setLoading(false);
     }, [id]);
-
-    const displayRazorpay = async () => {
-        const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
-        if (!res) {
-            alert('Razorpay SDK failed to load. Are you online?');
-            return;
-        }
-
-        // Simulate backend order creation
-        const order_id = "order_" + Math.random().toString(36).substr(2, 9);
-        const amount = room.price * 100; // Razorpay expects amount in paise
-
-        const options = {
-            key: "rzp_test_replace_with_your_key", 
-            amount: amount.toString(),
-            currency: 'INR',
-            name: 'Shri Valli Residency',
-            description: `Booking for ${room.title}`,
-            image: "https://example.com/your_logo.png",
-            order_id: order_id,
-            handler: function (response) {
-                // Simulate backend payment verification success
-                alert("Payment successful! Your room has been booked.");
-                navigate('/');
-            },
-            prefill: {
-                name: 'Guest User',
-                email: 'guest@example.com',
-            },
-            theme: {
-                color: '#C09B5A',
-            },
-        };
-
-        const paymentObject = new window.Razorpay(options);
-        paymentObject.open();
-    };
 
     if(loading) return <div className="section container" style={{textAlign: 'center'}}>Loading details...</div>;
     if(!room) return <div className="section container" style={{textAlign: 'center'}}>Room not found</div>;
@@ -139,7 +100,6 @@ const RoomDetail = () => {
                 isOpen={isModalOpen} 
                 onClose={() => setIsModalOpen(false)} 
                 roomName={room.title}
-                onRazorpayClick={displayRazorpay}
             />
 
             <AnimatePresence>

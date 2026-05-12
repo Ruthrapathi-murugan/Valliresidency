@@ -14,7 +14,7 @@ const Rooms = () => {
                 animate={{ opacity: 1, y: 0 }}
                 style={{ textAlign: 'center', marginBottom: '50px' }}
             >
-                <h1 style={{ fontSize: '3rem', marginBottom: '10px' }}>Our Rooms & Suites</h1>
+                <h1 style={{ fontSize: '3rem', marginBottom: '10px' }}>Best Hotel Rooms in Palani</h1>
                 <p style={{ color: '#666', maxWidth: '600px', margin: '0 auto' }}>
                     Experience uncompromising comfort. Each room is meticulously designed with a blend of modern amenities and timeless elegance.
                 </p>
