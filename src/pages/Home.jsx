@@ -1,48 +1,62 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, EffectFade, Pagination, Navigation } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 import { Link, useNavigate } from 'react-router-dom';
 import { roomsData } from '../data/roomsData';
-import { Wifi, Coffee, Stethoscope, Tv, Bed, Bath, Plug, Map, Wind, Utensils, ArrowUpCircle, Zap, Phone, Mail, Globe, MapPin } from 'lucide-react';
+import { Wifi, Coffee, Stethoscope, Tv, Bed, Bath, Plug, Map, Wind, Utensils, ArrowUpCircle, Zap, Phone, Mail, Globe, MapPin, Car, Plane, Train } from 'lucide-react';
 
 const sliderImages = [
     "https://res.cloudinary.com/dcgkfd03b/image/upload/v1776834910/2BED_hvz53x.png",
     "https://res.cloudinary.com/dcgkfd03b/image/upload/v1776835491/TWIN_BED_e5jc9b.png",
     "https://res.cloudinary.com/dcgkfd03b/image/upload/v1776835490/4BED3_nufaea.png",
-    "https://res.cloudinary.com/dcgkfd03b/image/upload/v1776835490/SINGLEBED_kozmzn.png"
+    "https://res.cloudinary.com/dcgkfd03b/image/upload/v1776835490/SINGLEBED_kozmzn.png",
+    "https://res.cloudinary.com/dcgkfd03b/image/upload/v1778605651/ChatGPT_Image_May_12_2026_10_36_55_PM_eqcrhy.png"
 ];
 
 const Home = () => {
-    const [currentImage, setCurrentImage] = useState(0);
     const [featuredRooms, setFeaturedRooms] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
         setFeaturedRooms(roomsData.slice(0, 3));
-
-        const timer = setInterval(() => {
-            setCurrentImage((prev) => (prev + 1) % sliderImages.length);
-        }, 5000);
-        return () => clearInterval(timer);
     }, []);
 
     return (
         <div>
             {/* Hero Section */}
             <section style={styles.hero}>
-                <AnimatePresence>
-                    <motion.div
-                        key={currentImage}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 1 }}
-                        style={{
-                            ...styles.heroBgImg,
-                            backgroundImage: `url(${sliderImages[currentImage]})`
-                        }}
-                    />
-                </AnimatePresence>
-                <div style={styles.heroOverlay}></div>
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0 }}>
+                    <Swiper
+                        modules={[Autoplay, EffectFade, Pagination, Navigation]}
+                        effect="fade"
+                        speed={1000}
+                        autoplay={{ delay: 5000, disableOnInteraction: false }}
+                        pagination={{ clickable: true }}
+                        navigation={true}
+                        loop={true}
+                        style={{ height: '100%', width: '100%' }}
+                    >
+                        {sliderImages.map((img, index) => (
+                            <SwiperSlide key={index}>
+                                <div style={{
+                                    ...styles.heroBgImg,
+                                    backgroundImage: `url(${img})`,
+                                    position: 'relative', // Override absolute for slide internal
+                                    height: '100vh'
+                                }}>
+                                    <div style={styles.heroOverlay}></div>
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
                 <div className="container" style={styles.heroContent}>
                     <motion.h1 
                         initial={{ opacity: 0, y: 30 }}
@@ -66,6 +80,7 @@ const Home = () => {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: 0.6 }}
+                        style={{ pointerEvents: 'auto' }} // Re-enable clicks for the button
                     >
                         <Link to="/rooms" className="btn" style={{ padding: '16px 40px', fontSize: '1.1rem' }}>
                             Discover Our Rooms
@@ -220,8 +235,78 @@ const Home = () => {
                 </div>
             </section>
 
+            {/* Cab & Travel Services Section */}
+            <section id="travel-services" className="section" style={{ backgroundColor: '#FAF9F6' }}>
+                <div className="container">
+                    <motion.h2 
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        className="section-title"
+                        style={{ textAlign: 'center', marginBottom: '10px' }}
+                    >
+                        Cab & Travel Services
+                    </motion.h2>
+                    <p style={{ textAlign: 'center', color: '#666', marginBottom: '40px', maxWidth: '700px', margin: '0 auto 40px' }}>
+                        We provide reliable and comfortable cab services to ensure your travel in and around Palani is smooth and hassle-free.
+                    </p>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px' }}>
+                        {[
+                            { 
+                                title: 'Airport Drop & Pick-up', 
+                                description: 'Timely transfers to and from Coimbatore (CJB) and Madurai (IXM) airports.',
+                                icon: <Plane size={40} color="#C09B5A" /> 
+                            },
+                            { 
+                                title: 'Railway Station Transfer', 
+                                description: 'Hassle-free pick-up and drop-off at Palani and nearby railway stations.',
+                                icon: <Train size={40} color="#C09B5A" /> 
+                            },
+                            { 
+                                title: 'Local Sightseeing', 
+                                description: 'Explore Palani and the beautiful surrounding areas with our customized cab tours.',
+                                icon: <Car size={40} color="#C09B5A" /> 
+                            }
+                        ].map((service, i) => (
+                            <motion.div 
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.1 }}
+                                viewport={{ once: true }}
+                                style={{
+                                    backgroundColor: '#fff',
+                                    padding: '40px 30px',
+                                    borderRadius: '12px',
+                                    textAlign: 'center',
+                                    boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
+                                    border: '1px solid #f0efeb'
+                                }}
+                            >
+                                <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
+                                    {service.icon}
+                                </div>
+                                <h3 style={{ fontSize: '1.4rem', marginBottom: '15px', color: '#222' }}>{service.title}</h3>
+                                <p style={{ color: '#666', lineHeight: '1.6' }}>{service.description}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                    <div style={{ textAlign: 'center', marginTop: '40px' }}>
+                        <a 
+                            href="https://wa.me/917810084884?text=I%20want%20to%20book%20a%20cab%20at%20Shri%20Valli%20Residency" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="btn" 
+                            style={{ padding: '14px 40px', fontSize: '1.1rem' }}
+                        >
+                            Book a Cab via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </section>
+
             {/* Gallery Section */}
-            <section id="gallery" className="section" style={{ backgroundColor: '#FAF9F6' }}>
+            <section id="gallery" className="section" style={{ backgroundColor: '#fff' }}>
                 <div className="container">
                     <motion.h2 
                         initial={{ opacity: 0 }}
@@ -492,7 +577,8 @@ const styles = {
         zIndex: 2,
         textAlign: 'center',
         color: '#fff',
-        maxWidth: '800px'
+        maxWidth: '800px',
+        pointerEvents: 'none' // Allow clicks to pass through to slider
     },
     heroTitle: {
         fontSize: '4.5rem',
