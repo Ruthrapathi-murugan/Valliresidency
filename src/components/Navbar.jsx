@@ -27,8 +27,11 @@ const Navbar = () => {
     return (
         <nav style={{...styles.navbar, backgroundColor: navBg, boxShadow: shadow}}>
             <div className="container" style={styles.navContainer}>
-                <Link to="/" style={{...styles.logo, color: textColor}}>
-                    Shri Valli<span>Residency</span>
+                <Link to="/" style={{...styles.logoContainer, color: textColor}}>
+                    <img src="https://res.cloudinary.com/dcgkfd03b/image/upload/v1779208946/Logo_for_Valli_residency_aagtzx.png" alt="Shri Valli Residency Logo" style={styles.logoImage} />
+                    <div style={styles.logoText}>
+                        Shri Valli<span>Residency</span>
+                    </div>
                 </Link>
 
                 {/* Desktop Menu */}
@@ -96,7 +99,17 @@ const styles = {
         justifyContent: 'space-between',
         alignItems: 'center',
     },
-    logo: {
+    logoContainer: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '12px',
+        textDecoration: 'none',
+    },
+    logoImage: {
+        height: '45px',
+        width: 'auto',
+    },
+    logoText: {
         fontFamily: "'Playfair Display', serif",
         fontSize: '1.5rem',
         fontWeight: '700',

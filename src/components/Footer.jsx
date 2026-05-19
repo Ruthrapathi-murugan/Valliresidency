@@ -9,9 +9,12 @@ const Footer = () => {
                 
                 {/* Brand Section */}
                 <div>
-                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', marginBottom: '20px', color: '#C09B5A' }}>
-                        Shri Valli Residency
-                    </h3>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
+                        <img src="https://res.cloudinary.com/dcgkfd03b/image/upload/v1779208946/Logo_for_Valli_residency_aagtzx.png" alt="Shri Valli Residency Logo" style={{ height: '60px', width: 'auto' }} />
+                        <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', color: '#C09B5A', margin: 0 }}>
+                            Shri Valli Residency
+                        </h3>
+                    </div>
                     <p style={{ color: '#aaa', lineHeight: '1.6', marginBottom: '20px' }}>
                         Experience true luxury and comfort at Palani's finest residency. Start your unforgettable journey with us today.
                     </p>
