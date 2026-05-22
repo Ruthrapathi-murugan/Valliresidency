@@ -509,7 +509,7 @@ const Home = () => {
                                     </div>
                                     <div>
                                         <p style={{ fontSize: '0.9rem', color: '#888', marginBottom: '2px' }}>Website</p>
-                                        <a href="https://www.shrivalliresidencypalani.com" target="_blank" rel="noopener noreferrer" style={{ color: '#222', fontWeight: '500', textDecoration: 'none' }}>www.shrivalliresidencypalani.com</a>
+                                        <a href="https://www.shrivalliresidency.com" target="_blank" rel="noopener noreferrer" style={{ color: '#222', fontWeight: '500', textDecoration: 'none' }}>www.shrivalliresidency.com</a>
                                     </div>
                                 </div>
                                 

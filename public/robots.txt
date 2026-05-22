@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shrivalliresidency.netlify.app/sitemap.xml
+Sitemap: https://www.shrivalliresidency.com/sitemap.xml
